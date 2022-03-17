@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title th:text="#{Resumen.titulo}"></title>
+<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+</head>
+<body>
+<div th:replace="fragments/Navegacion :: header"></div>
+<form action="Resumen" method="POST">
+<fieldset>
+	<legend th:text="#{Personales.legend}"></legend>		
+	<b><span th:text="#{Personales.nombre}"/></b><span th:text="${nombre}"></span><br />
+	<b><span th:text="#{Personales.apellidos}" /></b><span th:text="${apellidos}"></span><br />
+	<b><span th:text="#{Personales.fecha}" /></b><span th:text="${fechaNacimiento}"></span><br />
+	<b><span th:text="#{Personales.genero}" /></b> 
+	<span th:switch="${generoSeleccionado}">
+		<span th:case="'h'" th:text="#{Resumen.genero.hombre}" />
+		<span th:case="'m'" th:text="#{Resumen.genero.mujer}" />
+		<span th:case="'o'" th:text="#{Resumen.genero.o}"/>      
+	</span>
+	<br />
+	<b><span th:text="#{Personales.casadopareja}" /></b></span>
+		<span th:if="${casado == 'CPH'}" th:text="#{Resumen.casado}"></span>
+    	<span th:unless="${casado == 'CPH'}" th:text="#{Resumen.soltero}"></span>
+    <br />
+	<b><span th:text="#{Personales.hijo}" /></b></span>
+		<span th:if="${casado == 'HJS'}" th:text="#{Resumen.hijos}"></span>
+    	<span th:unless="${casado == 'HJS'}" th:text="#{Resumen.nopadre}"></span>
+	<br />
+	<b><td th:text="#{Personales.pais}" /></b>
+		<span th:switch="${paises}">
+		    <span th:case="'ES'" th:text="#{Resumen.paises.espana}" />
+		    	
+		    <span th:case="'FR'" th:text="#{Resumen.paises.francia}" />
+		  
+		    <span th:case="'IT'" th:text="#{Resumen.paises.italia}"/>
+		     
+		    <span th:case="'PT'" th:text="#{Resumen.paises.portugal}" />
+		       
+		</span>
+	
+</fieldset>
+<fieldset>
+	<legend th:text="#{Profesionales.legend}"></legend>		
+	<b><span th:text="#{Profesionales.departamento}"/></b>
+	<span th:switch="${departamento}">
+		<span th:case="'D'" th:text="#{Resumen.dep.desarrollo}" />
+		<span th:case="'M'" th:text="#{Resumen.dep.marketing}" />
+		<span th:case="'R'" th:text="#{Resumen.dep.recursos}"/>      
+	</span>
+	<br />
+	<b><span th:text="#{Profesionales.salario}"/></b><span th:text="${salario}"></span><br />
+	<b><span th:text="#{Profesionales.comentarios}"/></b><span th:text="${comentarios}"></span><br />
+</fieldset>
+<fieldset>
+	<legend th:text="#{Bancarios.legend}"></legend>		
+	<b><span th:text="#{Bancarios.cuenta}"/></b><span th:text="${cuentaCorriente}"><br />
+</fieldset>
+<input type="submit" th:value="#{Resumen.submit}" />
+</form>
+
+</body>

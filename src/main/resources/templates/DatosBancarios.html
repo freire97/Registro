@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title th:text="#{Bancarios.titulo}"></title>
+		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	</head>
+	<body>
+		<div th:replace="fragments/Navegacion :: header"></div>
+		<form action="DatosBancarios" method="POST">
+			<fieldset>
+				<legend th:text="#{Bancarios.legend}"></legend>	
+				<span th:text="#{Bancarios.cuenta}"></span>	
+				<input name="cuentaCorriente" id="cuentaCorriente" th:value="${cuentaCorriente}" /> <br />
+				<input type="submit" th:value="#{Bancarios.submit}" />
+			</fieldset>
+		</form>
+		
+	</body>
+</html>
